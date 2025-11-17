@@ -3,32 +3,22 @@ pipeline {
 
     stages {
 
-        stage('Clone') {
+        stage('clear working directory') {
             steps {
-                echo "Cloning repository..."
-                git branch: 'main',
-                    url: 'https://github.com/syash4069-png/demo-public.git'
+               sh 'rm -r *'
+                sh 'rm -r ../../../../www/html/*'
             }
         }
 
-        stage('List Files') {
+        stage('clonning from scm') {
             steps {
-                echo "Listing files..."
-                sh 'ls -la'
+               sh 'git clone https://github.com/syash4069-png/Jenkins.git'
             }
         }
 
-        stage('Sleep') {
+        stage('copy to html') {
             steps {
-                echo "Sleeping for 10 seconds..."
-                sh 'sleep 10'
-            }
-        }
-
-        stage('Run Script') {
-            steps {
-                echo "Running command..."
-                sh 'echo "Pipeline Finished Successfully!"'
+                sh 'mv'
             }
         }
 
